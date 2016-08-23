@@ -1,3 +1,3 @@
 #!/bin/sh
-udpsvd -vE 0.0.0.0 69 busybox tftpd /tftpdir/
+udpsvd -E 0.0.0.0 69 busybox tftpd /tftpdir/
 
