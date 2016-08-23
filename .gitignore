@@ -1,2 +1,3 @@
-core-login-key*
-netboot/
+/core-login-key*
+/netboot/
+/initrd2
