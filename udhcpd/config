@@ -1,0 +1,4 @@
+start 172.17.0.3
+siaddr 172.17.0.2
+boot_file /boot/grub/i386-pc/core.0
+
