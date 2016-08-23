@@ -4,6 +4,7 @@ ADD http://alpha.release.core-os.net/amd64-usr/current/coreos_production_pxe.vml
 ADD http://alpha.release.core-os.net/amd64-usr/current/coreos_production_pxe_image.cpio.gz /tftpdir/initrd1
 ADD tftp /init/tftp/run
 ADD udhcpd /init/udhcpd
+ADD initrd2 /tftpdir/
 RUN mkdir -p /var/lib/misc
 RUN touch /var/lib/misc/udhcpd.leases
 CMD runsvdir /init
