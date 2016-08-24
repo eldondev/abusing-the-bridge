@@ -4,6 +4,7 @@ echo "SSHKEY" >>/home/core/.ssh/authorized_keys
 mkdir /opt
 export PATH="/opt/docker:$PATH"
 tar -C/opt -xf /usr/share/oem/docker-1.12.1.tgz
-mv /usr/share/oem/docker.service /etc/systemd/system/
-nohup /opt/docker/dockerd &
+mv /usr/share/oem/docker.service /etc/systemd/system
+systemctl daemon-reload
+systemctl start docker
 sleep 10

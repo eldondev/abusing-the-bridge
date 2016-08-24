@@ -13,12 +13,11 @@ docker112:
 	wget -P usr/share/oem/  http://get.docker.com/builds/Linux/x86_64/docker-1.12.1.tgz
 
 core-login-key:  PHONY
-	rm core-login-key
+	rm -f core-login-key
 	ssh-keygen -N "" -f core-login-key
 	mkdir -p usr/share/oem
 	sed "s%SSHKEY%`cat core-login-key.pub`%" cloud-config.yml >usr/share/oem/cloud-config.yml
 	echo -n /opt/docker/ >>usr/share/oem/cloud-config.yml
 	docker swarm join-token worker |tail -n +2 | cut -c 5- >>usr/share/oem/cloud-config.yml
-	cp -v pxeocker.service usr/share/oem/
-	
+	cp -v docker.service usr/share/oem/
 PHONY:
