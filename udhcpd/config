@@ -1,4 +1,7 @@
 start 172.17.0.3
 siaddr 172.17.0.2
+opt dns 8.8.8.8
+opt subnet 255.255.255.0
+opt router 172.17.0.1
 boot_file /boot/grub/i386-pc/core.0
 

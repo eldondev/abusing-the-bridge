@@ -1,4 +1,9 @@
-#cloud-config
-
-ssh_authorized_keys:
-  - "SSHKEY"
+#!/bin/sh
+mkdir -m 700 -p /home/core/.ssh
+echo "SSHKEY" >>/home/core/.ssh/authorized_keys
+mkdir /opt
+export PATH="/opt/docker:$PATH"
+tar -C/opt -xf /usr/share/oem/docker-1.12.1.tgz
+mv /usr/share/oem/docker.service /etc/systemd/system/
+nohup /opt/docker/dockerd &
+sleep 10
