@@ -12,7 +12,7 @@ docker112:
 	rm -rf usr/share/oem/docker-1.12.1.tgz
 	wget -P usr/share/oem/  http://get.docker.com/builds/Linux/x86_64/docker-1.12.1.tgz
 
-core-login-key:  PHONY
+core-login-key: swarm
 	rm -f core-login-key
 	ssh-keygen -N "" -f core-login-key
 	mkdir -p usr/share/oem
@@ -20,4 +20,8 @@ core-login-key:  PHONY
 	echo -n /opt/docker/ >>usr/share/oem/cloud-config.yml
 	docker swarm join-token worker |tail -n +2 | cut -c 5- >>usr/share/oem/cloud-config.yml
 	cp -v docker.service usr/share/oem/
+
+swarm: PHONY
+	docker swarm init --advertise-addr 172.17.0.1 || true
+
 PHONY:

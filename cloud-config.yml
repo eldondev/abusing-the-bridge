@@ -5,6 +5,7 @@ mkdir /opt
 export PATH="/opt/docker:$PATH"
 tar -C/opt -xf /usr/share/oem/docker-1.12.1.tgz
 mv /usr/share/oem/docker.service /etc/systemd/system
+uuidgen | cut -c -6 |xargs hostname
 systemctl daemon-reload
 systemctl start docker
 sleep 10
